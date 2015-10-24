@@ -1,7 +1,8 @@
 __author__ = 'Frank'
 
-from enum import Enum
 from random import randint
+from helper import PickFromList, StringFromList
+import json
 
 charClasses = ['Fighter','Thief','Cleric','Wizard']
 classHPperLevel = {'Fighter' : 4,
@@ -12,18 +13,32 @@ classAttackBonusPerLevel = {'Fighter' : 1.0,
 				  			'Cleric': 0.5,
 				 			'Thief': 0.5,
 							'Wizard': 1.0/3}
+classFrayDice = {'Fighter' : 8,
+				 'Cleric': 6,
+				 'Thief': 6,
+				 'Wizard': 4}
+classNumberOfSkills = {'Fighter' : 2,
+				 'Cleric': 2,
+				 'Thief': 4,
+				 'Wizard': 2}
 attributesList = ['STR','DEX','CON','INT','WIS','CHA']
+skillsList = ['Acrobatics','Arcana','Athletics','Intimidation','Knowledge',
+			  'Locks and Traps','Medicine','Perception','Persuation','Stealth']
 
 class Player:
 
 	def __init__(self):
 		self.name = ""		#Name of the character
 		self.charClass = charClasses[0]	#Class of the character
-		self.HP = 0		#Hit points
+		self.currentHP = 0		#Hit points
 		self.maxHP = 8	#Maximum hit points
 		self.level = 1	#Level
-		self.frayDice = 10	#Fray die to kill other monsters
-		self.attributes = dict()
+		self.attributes = dict()	#Dictionary of the 6 attributes
+		self.skills =  list()		#List of skills a character is trained in
+
+
+	def to_JSON(self):
+		return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
 	def RollAttributes(self):
 		bonus = 0
@@ -37,35 +52,36 @@ class Player:
 		print "---------------------"
 		print "Enter your name, adventurer!"
 		self.name = raw_input("> ")
+
 		#Roll attributes
 		print "The gods gifted %s with these attributes:" % self.name
 		self.RollAttributes()
 		for key in self.attributes:
 			print "%s : %s (%s)" % (key,DisplayAttribute(self.attributes[key]),DisplayBonus(self.attributes[key]))
+
 		#Choose class
-		out = ""
-		selection = 0
-		for index, item in enumerate(charClasses):
-			if index > 0:
-				out += ", "
-			out += str(index+1) + ". " + item
-		print "\nSelect your class: " + out
-		while selection not in range(1,len(charClasses)+1):
-			try:
-				selection = int(raw_input("> "))
-			except:
-				print "Please enter a number between 1 and " + str(len(charClasses))
-			else:
-				if selection not in range(1,len(charClasses)+1):
-					print "Please enter a number between 1 and " + str(len(charClasses))
-		self.charClass = charClasses[selection-1]
+		self.charClass = PickFromList("\nChoose your profession: ",charClasses)
+
 		#Set things based on class info
 		self.maxHP = classHPperLevel[self.charClass] * 2 + GetBonus(self.attributes['CON'])
+		self.currentHP = self.maxHP
+
+		#Select skills
+		numSkills = classNumberOfSkills[self.charClass]
+		print "%s, select %s skills you excel in!" % (self.name,numSkills)
+		for i in range(numSkills,0,-1):
+			self.skills.append(PickFromList(str(i) + " remaining: ",[x for x in skillsList if x not in self.skills]))
+
+		#Give final overview
 		print "You have %s HP and an attack bonus of %s." % (self.maxHP,self.AttackBonus())
+		print "Your skills are: " + StringFromList(self.skills)
 		print "Venture forth, %s the %s!" % (self.name, self.charClass)
 
 	def AttackBonus(self):
 		return round(self.level * classAttackBonusPerLevel[self.charClass],0)
+
+	def FrayDice(self):
+		return classFrayDice[self.charClass]
 
 def DisplayAttribute(attr):
 	###Displays attribute score with trailing blank for scores <10

@@ -3,8 +3,8 @@ __author__ = 'Frank'
 
 ###Import other classes and other stuff
 from player import Player
-import player
-import room
+import json
+import os
 
 ###Declaration of global variables
 rooms = list()
@@ -16,6 +16,10 @@ def main():
 	initialize the game state with defaults. Finally, start the game.
 	"""
 	p.GenerateCharacter()
+	print p.to_JSON()
+	os.chdir('G:\\Programmieren\\TextRPG')
+	with open('test.json','w') as outfile:
+		outfile.write(p.to_JSON())
 
 if __name__ == '__main__':
 	main()
