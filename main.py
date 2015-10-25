@@ -3,20 +3,19 @@ __author__ = 'Frank'
 
 ###Import other classes and other stuff
 from player import Player
-import json
+import locations
 import os
 
 ###Declaration of global variables
 rooms = list()
+currentRoom = locations.Room(1)
 p = Player()
 
 ###The "main" function, not to be confused with anything to do with main above it###
 def main():
-	"""Main function. Check if a savegame exists, and if so, load it. Otherwise
-	initialize the game state with defaults. Finally, start the game.
-	"""
+
+	#Character generation
 	p.GenerateCharacter()
-	print p.to_JSON()
 	os.chdir('G:\\Programmieren\\TextRPG')
 	with open('test.json','w') as outfile:
 		outfile.write(p.to_JSON())

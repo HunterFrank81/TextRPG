@@ -48,6 +48,11 @@ class Player:
 				bonus += GetBonus(self.attributes[attr])
 
 	def GenerateCharacter(self):
+		"""
+		Character generation and all that belongs to it.
+		:return:
+		"""
+
 		print "\nCHARACTER GENERATION:"
 		print "---------------------"
 		print "Enter your name, adventurer!"
@@ -63,11 +68,11 @@ class Player:
 		self.charClass = PickFromList("\nChoose your profession: ",charClasses)
 
 		#Set things based on class info
-		self.maxHP = classHPperLevel[self.charClass] * 2 + GetBonus(self.attributes['CON'])
+		self.maxHP = classHPperLevel[self.charClass] * 2 + self.AttrBonus('CON')
 		self.currentHP = self.maxHP
 
 		#Select skills
-		numSkills = classNumberOfSkills[self.charClass]
+		numSkills = classNumberOfSkills[self.charClass] + self.AttrBonus('INT')
 		print "%s, select %s skills you excel in!" % (self.name,numSkills)
 		for i in range(numSkills,0,-1):
 			self.skills.append(PickFromList(str(i) + " remaining: ",[x for x in skillsList if x not in self.skills]))
@@ -82,6 +87,9 @@ class Player:
 
 	def FrayDice(self):
 		return classFrayDice[self.charClass]
+
+	def AttrBonus(self,attr):
+		return GetBonus(self.attributes[attr])
 
 def DisplayAttribute(attr):
 	###Displays attribute score with trailing blank for scores <10
