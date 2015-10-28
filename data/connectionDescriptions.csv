@@ -1,0 +1,5 @@
+0|A door is located in the northern wall|closed|unlit
+0|An open door leads to another room in the north||unlit,closed
+1|A door leads back to the entrance||
+2|And here is a passage||hidden
+2|The wall to the north looks weird...|hidden|

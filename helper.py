@@ -1,9 +1,9 @@
 __author__ = 'Frank'
 
-###PickFromList takes the task to pick from a list of features
-def PickFromList(message, lst):
+###pick_from_list takes the task to pick from a list of features
+def pick_from_list(message, lst):
 	selection = 0
-	print message + StringFromList(lst,numbering=True)
+	print message + string_from_list(lst,numbering=True)
 	while selection not in range(1,len(lst)+1):
 		try:
 			selection = int(raw_input("> "))
@@ -14,8 +14,8 @@ def PickFromList(message, lst):
 				print "Please enter a number between 1 and " + str(len(lst))
 	return lst[selection-1]
 
-###StringFromList concatenates all entries from a list, separated by a comma. Optionally adds numbering
-def StringFromList(lst, numbering = False):
+###string_from_list concatenates all entries from a list, separated by a comma. Optionally adds numbering
+def string_from_list(lst, numbering = False):
 	out = ""
 	for index, item in enumerate(lst):
 		if index > 0:

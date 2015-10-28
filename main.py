@@ -8,15 +8,24 @@ import os
 
 ###Declaration of global variables
 rooms = list()
-currentRoom = locations.Room(1)
+#currentRoom = locations.Room()
 p = Player()
 
 ###The "main" function, not to be confused with anything to do with main above it###
 def main():
 
-	#Character generation
-	p.GenerateCharacter()
 	os.chdir('G:\\Programmieren\\TextRPG')
+
+	#Load data
+	rooms = locations.initialize_rooms()
+	currentRoom = rooms[0]
+
+	#Character generation
+	#p.generate_character()
+
+	#Start with first room
+	print currentRoom.get_description()
+
 	with open('test.json','w') as outfile:
 		outfile.write(p.to_JSON())
 

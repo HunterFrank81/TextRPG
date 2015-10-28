@@ -1,20 +1,9 @@
 {
-    "attributes": {
-        "CHA": 14, 
-        "CON": 10, 
-        "DEX": 9, 
-        "INT": 13, 
-        "STR": 13, 
-        "WIS": 8
-    }, 
-    "charClass": "Cleric", 
-    "currentHP": 6, 
+    "attributes": {}, 
+    "charClass": "Fighter", 
+    "currentHP": 0, 
     "level": 1, 
-    "maxHP": 6, 
-    "name": "Frank", 
-    "skills": [
-        "Arcana", 
-        "Locks and Traps", 
-        "Medicine"
-    ]
+    "maxHP": 8, 
+    "name": "", 
+    "skills": []
 }
