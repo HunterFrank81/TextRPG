@@ -43,6 +43,7 @@ class Player:
 	def roll_attributes(self):
 		bonus = 0
 		while bonus <= 0:
+			bonus = 0	#Reset bonus
 			for attr in attributesList:
 				self.attributes[attr] = randint(1,6) + randint(1,6) + randint(1,6)
 				bonus += get_bonus(self.attributes[attr])
