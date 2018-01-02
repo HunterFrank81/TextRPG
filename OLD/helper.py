@@ -1,8 +1,5 @@
 __author__ = 'Frank'
 
-from random import randint
-from config import DEBUG
-
 def PickFromList_Room(message, room_options = {}, general_options = {}):
     """
     Creates a list of all possible options in a room. Returns
@@ -61,7 +58,7 @@ def PickFromList(message, lst = [], dct = {}):
     #Generate message for output
     text = message
     if len(lst) > 0:
-        text += '\n' + StringFromList(lst, start_index = 1)
+        text += '\n' + StringFromList(lst, numbering=True)
     if len(dct) > 0:
         text += '\n' + StringFromDict(dct)
     print(text)
@@ -78,8 +75,8 @@ def PickFromList(message, lst = [], dct = {}):
                 out = lst[int(selection)-1]
         else:
             #Check if value entered appears in keys list of dictionary
-            if selection.capitalize() in dct:
-                out = selection.capitalize()
+            if selection in dct:
+                out = selection
             else:
                 print("This is not a valid option!")
     
@@ -136,53 +133,3 @@ def CreateHeader(text):
     text += "-" * length
     text += "\n" * 2
     return text
-
-def GetBonus(attr):
-    ###Returns attribute bonus based on attribute
-    if attr == 3:
-        return -3
-    elif attr <= 5:
-        return -2
-    elif attr <= 8:
-        return -1
-    elif attr <= 12:
-        return 0
-    elif attr <= 15:
-        return 1
-    elif attr <= 17:
-        return 2
-    elif attr == 18:
-        return 3
-    else:
-        return 0
-
-def DoTest(attr_score, DC = 10, advantage = False, disadvantage = False):
-    """
-    Executes a test with a D20 against a DC
-    """
-    if DEBUG:
-        print("attr_score:", attr_score, type(attr_score))
-        print("DC:", DC, type(DC))
-        print("Advantage:", advantage, type(advantage))
-        print("Disadvantage:", disadvantage, type(disadvantage))
-    #Determine number of tries
-    result = 0
-    if advantage == True and disadvantage == False:
-        result = max([D(20), D(20)])
-    elif advantage == False and disadvantage == True:
-        result = min([D(20), D(20)])
-    else:
-        result = D(20)
-    
-    result += GetBonus(attr_score)
-    
-    if DEBUG:
-        print("result:", type(result), "DC:", type(DC))
-        
-    return result >= DC
-    
-def D(size):
-    """
-    Rolls a die with a given size
-    """
-    return randint(1, size)

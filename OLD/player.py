@@ -1,7 +1,7 @@
 __author__ = 'Frank'
 
 from random import randint
-from helper import PickFromList, StringFromList, CreateHeader, GetBonus
+from helper import PickFromList, StringFromList, CreateHeader
 import json
 
 charClasses = ['Fighter','Thief','Cleric','Wizard']
@@ -91,7 +91,7 @@ class Player:
         print("Your attributes are: " + DisplayAttributes(self.attributes))
         print("Your are skilled in: " + StringFromList(self.skills) + ".")
         print("You are on level %s with %s XP. You need %s additional XP to reach the next level." % (self.level, self.XP, self.xpToLevelUp()))
-        input("Press <Enter> to continue adventuring...")
+        print("\nPress Enter to continue adventuring...")
         #TO DO - add additional information
         
     def xpToLevelUp(self):
@@ -111,7 +111,24 @@ def DisplayAttribute(attr):
     if attr < 10: res = " "
     return res + str(attr)
 
-
+def GetBonus(attr):
+    ###Returns attribute bonus based on attribute
+    if attr == 3:
+        return -3
+    elif attr <= 5:
+        return -2
+    elif attr <= 8:
+        return -1
+    elif attr <= 12:
+        return 0
+    elif attr <= 15:
+        return 1
+    elif attr <= 17:
+        return 2
+    elif attr == 18:
+        return 3
+    else:
+        return 0
 
 def DisplayBonus(attr):
     ###Displays bonus of a given attribute, including trailing "+" in front
