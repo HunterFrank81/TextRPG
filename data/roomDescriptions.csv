@@ -1,4 +1,10 @@
 0|You enter the dreadful dungeon. Darkness looms before you|unlit,dark|visited
+<<<<<<< HEAD
 0|This is the entrance. Your torch highlights everything|lit|unlit,dark
 1|Your torch lieght the entrace. It is only half bad now that it is familar|visited|unlit,dark
 2|Your torch lieght the entrace. It is only half bad now that it is familar|visited|unlit, dark
+=======
+0|This is the entrance. Your torch highlights everything||unlit,dark
+1|Your torch lieght the entrace. It is only half bad now that it is familar|visited|unlit,dark
+2|Your torch lieght the entrace. It is only half bad now that it is familar|visited|unlit, dark
+>>>>>>> origin/master

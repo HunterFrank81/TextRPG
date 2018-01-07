@@ -1,5 +1,10 @@
 0|A door is located in the northern wall|closed|unlit
+<<<<<<< HEAD
 0|An open door leads to another room in the north|open|unlit,closed
 1|An open door leads back to the entrance|open|
+=======
+0|An open door leads to another room in the north||unlit,closed
+1|A door leads back to the entrance||
+>>>>>>> origin/master
 2|And here is a passage||hidden
 2|The wall to the north looks weird...|hidden|

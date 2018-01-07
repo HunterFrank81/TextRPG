@@ -1,19 +1,9 @@
 {
-    "attributes": {
-        "CHA": 13, 
-        "CON": 13, 
-        "DEX": 9, 
-        "INT": 9, 
-        "STR": 12, 
-        "WIS": 11
-    }, 
+    "attributes": {}, 
     "charClass": "Fighter", 
-    "currentHP": 9, 
+    "currentHP": 0, 
     "level": 1, 
-    "maxHP": 9, 
-    "name": "Frank", 
-    "skills": [
-        "Acrobatics", 
-        "Locks and Traps"
-    ]
+    "maxHP": 8, 
+    "name": "", 
+    "skills": []
 }
