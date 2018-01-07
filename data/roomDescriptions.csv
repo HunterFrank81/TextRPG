@@ -1,5 +1,5 @@
 0|You enter the dreadful dungeon. Darkness looms before you|unlit,dark|visited
-0|This is the entrance. Your torch highlights everything|lit|unlit,dark
+0|This is the entrance. Your torch highlights everything||unlit,dark
 1|You enter another room. Interesting.||unlit,dark
 1|Here you are again in the other room. You know it by heart by now|visited|unlit,dark
 2|And a third room.||unlit,dark

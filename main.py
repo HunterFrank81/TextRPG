@@ -47,7 +47,7 @@ def main():
             #Build the list of options we need
             choice_options = {'Connections': exits, 'Item' : items, 'Creature': creatures}
             #Now we need to constuct our list, but from a dictionary of 
-            message = "\n" + p.name + ", what do you want to do next?"
+            message = "\n" + p.name + ", what do you want to do next?\n"
             if DEBUG:
                 print(choice_options)
             action, action_type = PickFromList_Room(message, choice_options, GENERAL_OPTIONS)
@@ -109,7 +109,7 @@ def main():
                 p.DisplayStats()
                 game_mode = 'Room'
             if action == 'M':
-                print("This was not a wise decision...", "Game mode =", game_mode)
+                print("This was not a wise decision...")
                 game_mode = 'Game over'
             else:
                 print("In construction - do not enter!")
