@@ -1,6 +1,5 @@
 __author__ = 'Frank'
 
-<<<<<<< HEAD
 from random import randint
 from config import DEBUG
 
@@ -100,24 +99,6 @@ def IsInteger(sel):
 
 ###StringFromList concatenates all entries from a list, separated by a comma. Optionally adds numbering
 def StringFromList(lst, start_index = 0):
-=======
-###pick_from_list takes the task to pick from a list of features
-def pick_from_list(message, lst):
-	selection = 0
-	print message + string_from_list(lst,numbering=True)
-	while selection not in range(1,len(lst)+1):
-		try:
-			selection = int(raw_input("> "))
-		except:
-			print "Please enter a number between 1 and " + str(len(lst))
-		else:
-			if selection not in range(1,len(lst)+1):
-				print "Please enter a number between 1 and " + str(len(lst))
-	return lst[selection-1]
-
-###string_from_list concatenates all entries from a list, separated by a comma. Optionally adds numbering
-def string_from_list(lst, numbering = False):
->>>>>>> origin/master
 	out = ""
 	for index, item in enumerate(lst):
 		if index > 0:
@@ -179,11 +160,6 @@ def DoTest(attr_score, DC = 10, advantage = False, disadvantage = False):
     """
     Executes a test with a D20 against a DC
     """
-    if DEBUG:
-        print("attr_score:", attr_score, type(attr_score))
-        print("DC:", DC, type(DC))
-        print("Advantage:", advantage, type(advantage))
-        print("Disadvantage:", disadvantage, type(disadvantage))
     #Determine number of tries
     result = 0
     if advantage == True and disadvantage == False:
@@ -196,8 +172,12 @@ def DoTest(attr_score, DC = 10, advantage = False, disadvantage = False):
     result += GetBonus(attr_score)
     
     if DEBUG:
-        print("result:", type(result), "DC:", type(DC))
-        
+        print("attr_score:", attr_score, type(attr_score))
+        print("DC:", DC, type(DC))
+        print("Advantage:", advantage, type(advantage))
+        print("Disadvantage:", disadvantage, type(disadvantage))
+        print("Result:", result)        
+    
     return result >= DC
     
 def D(size):

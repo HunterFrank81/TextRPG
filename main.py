@@ -3,12 +3,7 @@ __author__ = 'Frank'
 
 ###Import other classes and other stuff
 from player import Player
-<<<<<<< HEAD
 from helper import PickFromList, PickFromList_Room
-import json
-=======
-import locations
->>>>>>> origin/master
 import os
 import room
 from config import DEBUG, FULL
@@ -23,12 +18,11 @@ GENERAL_GAME_MODES = {'M': 'Menu', 'C': 'Character overview', 'I': 'Inventory', 
 
 ###The "main" function, not to be confused with anything to do with main above it###
 def main():
-<<<<<<< HEAD
     """Main function. Check if a savegame exists, and if so, load it. Otherwise
     initialize the game state with defaults. Finally, start the game.
     """
     if FULL:
-        p.GenerateCharacter()
+        p.GenerateCharacter()   
         p.DisplayStats()
     else:
         p.name = 'Horst'
@@ -60,23 +54,6 @@ def main():
             if DEBUG:
                 print(action_type, '-', action)
             #Query the action from the character
-=======
-
-	os.chdir('G:\\Programmieren\\TextRPG')
-
-	#Load data
-	rooms = locations.initialize_rooms()
-	currentRoom = rooms[0]
-
-	#Character generation
-	#p.generate_character()
-
-	#Start with first room
-	print currentRoom.get_description()
-
-	with open('test.json','w') as outfile:
-		outfile.write(p.to_JSON())
->>>>>>> origin/master
 
             #Based on settings, change the game mode and do the action
             if action_type == 'General':
