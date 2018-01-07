@@ -160,11 +160,6 @@ def DoTest(attr_score, DC = 10, advantage = False, disadvantage = False):
     """
     Executes a test with a D20 against a DC
     """
-    if DEBUG:
-        print("attr_score:", attr_score, type(attr_score))
-        print("DC:", DC, type(DC))
-        print("Advantage:", advantage, type(advantage))
-        print("Disadvantage:", disadvantage, type(disadvantage))
     #Determine number of tries
     result = 0
     if advantage == True and disadvantage == False:
@@ -177,8 +172,12 @@ def DoTest(attr_score, DC = 10, advantage = False, disadvantage = False):
     result += GetBonus(attr_score)
     
     if DEBUG:
-        print("result:", type(result), "DC:", type(DC))
-        
+        print("attr_score:", attr_score, type(attr_score))
+        print("DC:", DC, type(DC))
+        print("Advantage:", advantage, type(advantage))
+        print("Disadvantage:", disadvantage, type(disadvantage))
+        print("Result:", result)        
+    
     return result >= DC
     
 def D(size):

@@ -4,8 +4,6 @@ __author__ = 'Frank'
 ###Import other classes and other stuff
 from player import Player
 from helper import PickFromList, PickFromList_Room
-import json
-import locations
 import os
 import room
 from config import DEBUG, FULL
@@ -24,7 +22,7 @@ def main():
     initialize the game state with defaults. Finally, start the game.
     """
     if FULL:
-        p.GenerateCharacter()
+        p.GenerateCharacter()   
         p.DisplayStats()
     else:
         p.name = 'Horst'
